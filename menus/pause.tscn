@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b0fc211uy3bkw"]
+
+[ext_resource type="Script" uid="uid://bjte3qdrdn07t" path="res://menus/pause.gd" id="1_t3mel"]
+[ext_resource type="PackedScene" uid="uid://dx26l2rml0kby" path="res://menus/options.tscn" id="2_fejog"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1756021251]
+script = ExtResource("1_t3mel")
+
+[node name="Panel" type="Panel" parent="." unique_id=469486151]
+custom_minimum_size = Vector2(144, 129)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1898370903]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 136.0
+offset_bottom = 121.0
+
+[node name="Continue" type="Button" parent="Panel/VBoxContainer" unique_id=435955894]
+custom_minimum_size = Vector2(128, 25)
+layout_mode = 2
+text = "Continue"
+
+[node name="Options" type="Button" parent="Panel/VBoxContainer" unique_id=1257207807]
+custom_minimum_size = Vector2(128, 25)
+layout_mode = 2
+text = "Options"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer" unique_id=1868258709]
+custom_minimum_size = Vector2(128, 25)
+layout_mode = 2
+text = "Exit"
+
+[node name="OptionsMenu" parent="." unique_id=280785582 instance=ExtResource("2_fejog")]
+visible = false
+
+[connection signal="button_down" from="Panel/VBoxContainer/Continue" to="." method="hide"]
+[connection signal="button_down" from="Panel/VBoxContainer/Options" to="OptionsMenu" method="show"]
+[connection signal="button_up" from="Panel/VBoxContainer/Exit" to="." method="exit"]
