@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cs8spopb2ooxc"]
+
+[ext_resource type="Script" uid="uid://b3jxnrcsu33sa" path="res://player/player.gd" id="1_oul6g"]
+[ext_resource type="PackedScene" uid="uid://b0fc211uy3bkw" path="res://menus/pause.tscn" id="2_rkbax"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8vuu"]
+albedo_color = Color(0.40392157, 0.21568628, 0.78431374, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
+material = SubResource("StandardMaterial3D_u8vuu")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[node name="Player" type="CharacterBody3D" unique_id=2022565502]
+collision_layer = 16
+collision_mask = 7
+script = ExtResource("1_oul6g")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=916460924]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=120411391]
+handle_input_locally = false
+size = Vector2i(800, 600)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=313466864]
+unique_name_in_owner = true
+current = true
+
+[node name="head" type="Node3D" parent="." unique_id=347449152]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1480402327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_u8vuu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=749035103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_u8vuu")
+
+[node name="UI" type="Control" parent="." unique_id=358912607]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseMenu" parent="UI" unique_id=1756021251 instance=ExtResource("2_rkbax")]
+visible = false
+
+[node name="debug" type="Label" parent="UI" unique_id=1624010329]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "FPS: "
