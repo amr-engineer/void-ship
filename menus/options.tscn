@@ -18,10 +18,9 @@ offset_right = 4.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="General" type="TabBar" parent="TabContainer" unique_id=457637746]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -67,6 +66,7 @@ step = 0.1
 value = 1.1
 
 [node name="Graphics" type="TabBar" parent="TabContainer" unique_id=183310718]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -165,7 +165,7 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=500300020]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 text = "Master:"
 vertical_alignment = 1
@@ -187,7 +187,7 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1375005693]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 text = "Sound Effects:"
 vertical_alignment = 1
@@ -209,7 +209,7 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=691220012]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 text = "Ambient:"
 vertical_alignment = 1
@@ -231,7 +231,7 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1668000652]
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(192, 0)
 layout_mode = 2
 text = "Music:"
 vertical_alignment = 1
