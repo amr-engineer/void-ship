@@ -1,0 +1,302 @@
+[gd_scene format=3 uid="uid://dx26l2rml0kby"]
+
+[ext_resource type="Script" uid="uid://br4xdhn0n1tlk" path="res://menus/options.gd" id="1_p3s2b"]
+
+[node name="OptionsMenu" type="CanvasLayer" unique_id=280785582]
+script = ExtResource("1_p3s2b")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=290542285]
+custom_minimum_size = Vector2(700, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -20.0
+offset_right = 4.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+
+[node name="General" type="TabBar" parent="TabContainer" unique_id=457637746]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/General" unique_id=1506864824]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/General/ScrollContainer" unique_id=819170766]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/General/ScrollContainer/VBoxContainer" unique_id=1478790302]
+layout_mode = 2
+tooltip_text = "can't be changed after world creation
+each seed generates a unique world"
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/General/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1893798566]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+text = "Camera Sensitivity:"
+vertical_alignment = 1
+
+[node name="sensitivity" type="HSlider" parent="TabContainer/General/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1211477964]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 2.1
+step = 0.1
+value = 1.1
+
+[node name="Graphics" type="TabBar" parent="TabContainer" unique_id=183310718]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Graphics" unique_id=849555304]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/ScrollContainer" unique_id=741894380]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=331896144]
+layout_mode = 2
+tooltip_text = "can't be changed after world creation
+each seed generates a unique world"
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=2144993247]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Resolution: "
+
+[node name="resolution" type="HSlider" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1888580367]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+min_value = 0.1
+max_value = 1.9
+step = 0.1
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=921115750]
+layout_mode = 2
+tooltip_text = "can't be changed after world creation
+each seed generates a unique world"
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=2085418020]
+layout_mode = 2
+text = "Vsync: "
+
+[node name="vsync" type="OptionButton" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1115133327]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 2
+item_count = 4
+popup/item_0/text = "Disable"
+popup/item_0/id = 0
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+popup/item_3/text = "Mailbox (fast)"
+popup/item_3/id = 3
+
+[node name="Audio" type="TabBar" parent="TabContainer" unique_id=1140178511]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Audio" unique_id=2015421432]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = -8.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Audio/ScrollContainer" unique_id=1542336506]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Audio/ScrollContainer/VBoxContainer" unique_id=303492907]
+layout_mode = 2
+tooltip_text = "can't be changed after world creation
+each seed generates a unique world"
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=500300020]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Master:"
+vertical_alignment = 1
+
+[node name="master_audio" type="HSlider" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1481461976]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -64.0
+max_value = 0.0
+step = 0.1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Audio/ScrollContainer/VBoxContainer" unique_id=1271422171]
+layout_mode = 2
+tooltip_text = "can't be changed after world creation
+each seed generates a unique world"
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1375005693]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Sound Effects:"
+vertical_alignment = 1
+
+[node name="sfx_audio" type="HSlider" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=85063279]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -64.0
+max_value = 0.0
+step = 0.1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Audio/ScrollContainer/VBoxContainer" unique_id=978782790]
+layout_mode = 2
+tooltip_text = "can't be changed after world creation
+each seed generates a unique world"
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=691220012]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Ambient:"
+vertical_alignment = 1
+
+[node name="ambient_audio" type="HSlider" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=156097251]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -64.0
+max_value = 0.0
+step = 0.1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Audio/ScrollContainer/VBoxContainer" unique_id=1438298148]
+layout_mode = 2
+tooltip_text = "can't be changed after world creation
+each seed generates a unique world"
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1668000652]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Music:"
+vertical_alignment = 1
+
+[node name="music_audio" type="HSlider" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=162053683]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_vertical = 1
+min_value = -64.0
+max_value = 0.0
+step = 0.1
+
+[node name="Action" type="Button" parent="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer4/music_audio" unique_id=38607821]
+custom_minimum_size = Vector2(288, 35)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = 200.0
+offset_right = 144.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save" type="Button" parent="." unique_id=1809898732]
+custom_minimum_size = Vector2(256, 35)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 200.0
+offset_right = 128.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Save"
+
+[node name="Back" type="Button" parent="." unique_id=228109620]
+custom_minimum_size = Vector2(128, 35)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -318.0
+offset_top = 200.0
+offset_right = -190.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back
+"
+
+[connection signal="value_changed" from="TabContainer/General/ScrollContainer/VBoxContainer/HBoxContainer/sensitivity" to="." method="_on_sensitivity_value_changed"]
+[connection signal="value_changed" from="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer/resolution" to="." method="_on_resolution_value_changed"]
+[connection signal="item_selected" from="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer2/vsync" to="." method="_on_vsync_item_selected"]
+[connection signal="value_changed" from="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer/master_audio" to="." method="_on_master_audio_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer2/sfx_audio" to="." method="_on_sfx_audio_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer3/ambient_audio" to="." method="_on_ambient_audio_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer4/music_audio" to="." method="_on_music_audio_value_changed"]
+[connection signal="button_down" from="Save" to="." method="save"]
+[connection signal="button_up" from="Back" to="." method="hide"]
