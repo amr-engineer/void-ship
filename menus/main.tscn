@@ -30,6 +30,11 @@ custom_minimum_size = Vector2(192, 32)
 layout_mode = 2
 text = "Options"
 
+[node name="Credits" type="Button" parent="VBoxContainer" unique_id=1168972704]
+custom_minimum_size = Vector2(192, 32)
+layout_mode = 2
+text = "Credits"
+
 [node name="Quit" type="Button" parent="VBoxContainer" unique_id=1032543132]
 custom_minimum_size = Vector2(192, 32)
 layout_mode = 2
@@ -49,6 +54,61 @@ text = "(c) Spirit ^_^"
 [node name="OptionsMenu" parent="." unique_id=280785582 instance=ExtResource("2_qeakq")]
 visible = false
 
+[node name="CreditsPanel" type="Panel" parent="." unique_id=521180375]
+visible = false
+custom_minimum_size = Vector2(400, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreditsPanel" unique_id=1163334309]
+custom_minimum_size = Vector2(400, 236)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -150.0
+offset_right = 200.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Made by Spirit <amr@programmer.net>
+Tartarus Studio
+
+Fonts used: Orbitron and Noto Kufi"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Close" type="Button" parent="CreditsPanel" unique_id=241200225]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -47.0
+offset_right = 64.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Close"
+
 [connection signal="button_down" from="VBoxContainer/Start" to="." method="start"]
 [connection signal="button_down" from="VBoxContainer/Options" to="OptionsMenu" method="show"]
+[connection signal="button_down" from="VBoxContainer/Credits" to="CreditsPanel" method="show"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="quit"]
+[connection signal="button_down" from="CreditsPanel/Close" to="CreditsPanel" method="hide"]
