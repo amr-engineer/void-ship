@@ -1,15 +1,16 @@
 extends CharacterBody3D
 
 
-@onready var head: Node3D = $head
-@onready var cam: Camera3D = $%Camera3D
+@export var camera: Camera3D
+
+@onready var head: RemoteTransform3D = $head
 @onready var pause_menu: CanvasLayer = $UI/PauseMenu
 
 
 const LONG_PRESS_DURATION = 200 # in ms
 const SPEED = 4.0
 const SPRINT_MULT := 1.5
-const JUMP_VELOCITY = 4
+const JUMP_VELOCITY = 3.5
 const MASS = 1
 const EARLY_JUMP_TIMEOUT = 0.1 # in sec
 const LAZY_JUMP_TIMEOUT = 0.15 # in sec
@@ -21,8 +22,10 @@ var sprint_start_msec := 0
 var is_sprinting := true
 
 
-func update_cam() -> void:
-	cam.global_transform = head.global_transform
+func set_cam(cam: Camera3D = camera) -> void:
+	if cam:
+		head.remote_path = cam.get_path()
+		camera = cam
 
 
 func on_pause_state_changed() -> void:
@@ -31,7 +34,7 @@ func on_pause_state_changed() -> void:
 
 
 func _ready() -> void:
-	update_cam()
+	set_cam()
 	pause_menu.hide()
 	pause_menu.visibility_changed.connect(on_pause_state_changed)
 	on_pause_state_changed()
@@ -61,7 +64,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _process(_delta: float) -> void:
-	update_cam()
 	var txt = """FPS: %s
 	(%.2f, %.2f, %.2f)
 	%.2f, %.2f""" % [

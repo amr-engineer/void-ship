@@ -11,12 +11,13 @@ material = SubResource("StandardMaterial3D_u8vuu")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
-[node name="Player" type="CharacterBody3D" unique_id=2022565502]
-collision_layer = 16
-collision_mask = 7
+[node name="Player" type="CharacterBody3D" unique_id=2022565502 node_paths=PackedStringArray("camera")]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_oul6g")
+camera = NodePath("SubViewportContainer/SubViewport/Camera3D")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=916460924]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1977306312]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,17 +25,19 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=120411391]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=724128353]
 handle_input_locally = false
 size = Vector2i(800, 600)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=313466864]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1460222544]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 current = true
 
-[node name="head" type="Node3D" parent="." unique_id=347449152]
+[node name="head" type="RemoteTransform3D" parent="." unique_id=349548872]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+remote_path = NodePath("../SubViewportContainer/SubViewport/Camera3D")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1480402327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -44,7 +47,7 @@ mesh = SubResource("CapsuleMesh_u8vuu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_u8vuu")
 
-[node name="UI" type="Control" parent="." unique_id=358912607]
+[node name="UI" type="Control" parent="." unique_id=790134982]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -53,7 +56,7 @@ offset_bottom = 40.0
 [node name="PauseMenu" parent="UI" unique_id=1756021251 instance=ExtResource("2_rkbax")]
 visible = false
 
-[node name="debug" type="Label" parent="UI" unique_id=1624010329]
+[node name="debug" type="Label" parent="UI" unique_id=1778222466]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
