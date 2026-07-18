@@ -56,7 +56,7 @@ visible = false
 
 [node name="CreditsPanel" type="Panel" parent="." unique_id=521180375]
 visible = false
-custom_minimum_size = Vector2(400, 300)
+custom_minimum_size = Vector2(600, 364)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -69,27 +69,36 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CreditsPanel" unique_id=1163334309]
-custom_minimum_size = Vector2(400, 236)
+[node name="Label" type="RichTextLabel" parent="CreditsPanel" unique_id=1483040644]
+custom_minimum_size = Vector2(568, 268)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -150.0
-offset_right = 200.0
-offset_bottom = 86.0
+offset_left = -292.0
+offset_top = -166.0
+offset_right = 292.0
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Made by Spirit <amr@programmer.net>
-Tartarus Studio
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/line_separation = 4
+bbcode_enabled = true
+text = "Void Ship - Tartarus Studio
 
-Fonts used: Orbitron and Noto Kufi"
+Made by Spirit <amr@programmer.net>
+
+Fonts used:
+Orbitron
+Noto Kufi
+
+refer to README in the git repo for links:
+github.com/amr-engineer/void-ship"
 horizontal_alignment = 1
 vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="Close" type="Button" parent="CreditsPanel" unique_id=241200225]
 custom_minimum_size = Vector2(128, 0)
