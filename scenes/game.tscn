@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bmaw8ni2xwsbl"]
+
+[ext_resource type="Environment" uid="uid://cxfvw4l3kc8tr" path="res://default_env.tres" id="1_uwrxv"]
+
+[node name="Game" type="Node3D" unique_id=373692817]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1919263906]
+environment = ExtResource("1_uwrxv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1530287382]
+transform = Transform3D(-0.25881907, 0.2500001, -0.9330127, 1.1313343e-08, 0.9659258, 0.25881916, 0.9659258, 0.06698732, -0.25000006, 0, 25, 0)
