@@ -59,7 +59,7 @@ offset_bottom = 40.0
 visible = false
 
 [node name="debug" type="Label" parent="UI" unique_id=1778222466]
-layout_mode = 0
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS: "
