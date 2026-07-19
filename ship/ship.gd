@@ -9,7 +9,7 @@ class_name Ship
 @onready var player: Player = %Player
 @onready var game: Game = $".."
 
-var health : float = 10.0
+var health : float = 5.0
 var ftl_ready := false
 
 func _physics_process(delta: float) -> void:
