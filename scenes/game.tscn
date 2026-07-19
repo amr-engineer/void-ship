@@ -2,6 +2,7 @@
 
 [ext_resource type="Environment" uid="uid://cxfvw4l3kc8tr" path="res://default_env.tres" id="1_uwrxv"]
 [ext_resource type="ArrayMesh" uid="uid://dj88if37v1rjt" path="res://assets/ship_body.obj" id="3_gee14"]
+[ext_resource type="Script" uid="uid://ipbv5a5dxp6u" path="res://ship/ship.gd" id="3_iywne"]
 [ext_resource type="Texture2D" uid="uid://b21p4f8joflo3" path="res://assets/Fabric004_1K-PNG_Color.png" id="4_u5sy4"]
 [ext_resource type="ArrayMesh" uid="uid://c0416fwp4q3e6" path="res://assets/ship_interior.obj" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://du0w173ljhbpg" path="res://assets/EVA.png" id="5_p57ef"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://brqb3xqctrje3" path="res://assets/dashboard_heartpanel.png" id="7_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://cs8spopb2ooxc" path="res://player/player.tscn" id="7_gee14"]
 [ext_resource type="Texture2D" uid="uid://cfp2b68sye7fe" path="res://assets/danger_of_death.png" id="8_0tnpc"]
+[ext_resource type="Script" uid="uid://nndng22b8a6r" path="res://ship/optic_sensors_screen.gd" id="9_vtaks"]
 
 [sub_resource type="GDScript" id="GDScript_lbhrr"]
 script/source = "extends Node3D
@@ -120,6 +122,7 @@ layers = 2
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
 physics_material_override = SubResource("PhysicsMaterial_r4tgf")
 gravity_scale = 0.0
+script = ExtResource("3_iywne")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship" unique_id=194032711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
@@ -258,6 +261,7 @@ transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 2.842171e-14,
 [node name="center_screen" type="StaticBody3D" parent="interior/objects" unique_id=549378042]
 collision_layer = 8
 collision_mask = 8
+script = ExtResource("9_vtaks")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interior/objects/center_screen" unique_id=1391225560]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, 3.5, -9.499999)
