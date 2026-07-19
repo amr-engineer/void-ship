@@ -1,7 +1,10 @@
 extends Node3D
+class_name Game
 
 
 @onready var world_environment: WorldEnvironment = $WorldEnvironment
+
+var enemy : Node
 
 
 func _ready() -> void:
