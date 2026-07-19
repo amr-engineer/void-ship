@@ -27,6 +27,7 @@ func take_damage(dmg_mlt: float = 1.0) -> void:
 	var dmg := randf_range(0.05, 1.0) * dmg_mlt
 	health -= dmg
 	ship.health -= dmg
+	ship.prnt("Hull Health is %s" % (ship.health * 20))
 
 
 func power_on() -> void:
