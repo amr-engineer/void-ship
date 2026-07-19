@@ -1,11 +1,208 @@
-[gd_scene format=3 uid="uid://bmaw8ni2xwsbl"]
+[gd_scene format=4 uid="uid://bmaw8ni2xwsbl"]
 
 [ext_resource type="Environment" uid="uid://cxfvw4l3kc8tr" path="res://default_env.tres" id="1_uwrxv"]
+[ext_resource type="ArrayMesh" uid="uid://dj88if37v1rjt" path="res://assets/ship_body.obj" id="3_gee14"]
+[ext_resource type="Texture2D" uid="uid://b21p4f8joflo3" path="res://assets/Fabric004_1K-PNG_Color.png" id="4_u5sy4"]
+[ext_resource type="ArrayMesh" uid="uid://c0416fwp4q3e6" path="res://assets/ship_interior.obj" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://du0w173ljhbpg" path="res://assets/EVA.png" id="5_p57ef"]
+[ext_resource type="ArrayMesh" uid="uid://cingttprvy3yw" path="res://assets/fire_extinguisher.obj" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://cs8spopb2ooxc" path="res://player/player.tscn" id="7_gee14"]
+
+[sub_resource type="GDScript" id="GDScript_lbhrr"]
+script/source = "extends Node3D
+"
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r4tgf"]
+rough = true
+absorbent = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_u5sy4"]
+points = PackedVector3Array(5, 2.3991585, 10, 5, -2.4001174, 10, 5, 2.3991585, -10, 2.499021, 4.9, 7.498043, -5, 2.3991585, 10, -5, -2.4001174, 10, 2.499021, -4.9, 7.498043, 5, -2.4001174, -10, 2.499021, 4.9, -7.501958, -5, 2.3991585, -10, -2.500979, 4.9, 7.498043, -5, -2.4001174, -10, -2.500979, -4.9, 7.498043, 2.499021, -4.9, -7.501958, -2.500979, 4.9, -7.501958, -2.500979, -4.9, -7.501958)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt5mj"]
+albedo_color = Color(0.8, 0.6, 1, 1)
+albedo_texture = ExtResource("4_u5sy4")
+metallic = 0.5
+roughness = 0.5
+subsurf_scatter_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_437kt"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vh78w"]
+_surfaces = [{
+"aabb": AABB(-0.894425, -1, -0.85064, 1.78885, 2, 1.70128),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAQADAAIAAgAEAAAAAgADAAUAAgAFAAQAAwAGAAUABAAFAAcABQAGAAcAAAAEAAgABAAHAAgAAAAJAAEAAAAIAAkAAQAKAAMACgAGAAMACQAKAAEABwAGAAsACAAHAAsACwAGAAoACAALAAkACQALAAoA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("/38AAP9/AAByWMFG//8AAIznwUYazwAAjKc9uf//AACM58FG5DAAAP//Pbn/fwAA/3////9/AACMpz25AAAAAHJYwUYAAAAAAADBRv9/AAByGD25Gs8AAHIYPbnkMAAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lbhrr"]
+resource_name = "rock_Icosphere"
+_surfaces = [{
+"aabb": AABB(-0.894425, -1, -0.85064, 1.78885, 2, 1.70128),
+"attribute_data": PackedByteArray("iy7//0UXr9fRRa/X0UWv11x0r9cWXf//uej//3PRr9f//6/XLbr//+iir9dz0a/Xoov//1x0r9fooq/X0UWv1xZdYK9cdK/XRRev14suYK/RRa/Xc9Gv17noYK///6/X6KKv1y26YK9z0a/XXHSv16KLYK/ooq/X0UWv14suYK8WXWCvRRev1wAAYK+LLmCvc9Gv1y26YK+56GCv6KKv16KLYK8tumCvXHSv1xZdYK+ii2Cviy5gr9FFEYcWXWCvAABgr0UXEYeLLmCvLbpgr3PREYe56GCvootgr+iiEYctumCvFl1gr1x0EYeii2Cv"),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAJAAlACYAJwAoACkAKgArACwALQAuAC8AMAAxADIAMwA0ADUANgA3ADgAOQA6ADsA"),
+"material": SubResource("StandardMaterial3D_437kt"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("/38AAP9/ZadyWMFG//9lp4znwUYaz2WnjOfBRhrPDciM58FG5DANyP9/AAD/fw3I/38AAP9/nLQAAMFG/3+ctHJYwUb//5y0/38AAP9/2N1yWMFGAADY3QAAwUb/f9jd/38AAP9/iPSM58FG5DCI9HJYwUYAAIj0jOfBRhrPW8D//z25/39bwIznwUbkMFvAcljBRv//6Y6Mpz25///pjoznwUYaz+mOAADBRv9/GadyGD25Gs8Zp3JYwUb//xmncljBRgAAyNlyGD255DDI2QAAwUb/f8jZjOfBRuQwQfOMpz25AABB83JYwUYAAEHzjOfBRhrPGaeMpz25//8Zp///Pbn/fxmncljBRv//6Y5yGD25Gs/pjoynPbn//+mOAADBRv9/W8ByGD255DBbwHIYPbkaz1vAcljBRgAAQfOMpz25AABB83IYPbnkMEHzjOfBRuQwyNn//z25/3/I2YynPbkAAMjZjKc9uf//nLT/f////3+ctP//Pbn/f5y0chg9uRrPZaf/f////39lp4ynPbn//2Wnchg9ueQwDcj/f////38NyHIYPbkazw3IjKc9uQAAiPT/f////3+I9HIYPbnkMIj0//89uf9/2N3/f////3/Y3YynPbkAANjdbylFZG8pRWRvKUVkLWCkPy1gpD8tYKQ/7DOZzewzmc3sM5nNSkmH7UpJh+1KSYftoHmdLqB5nS6geZ0uz3VfFM91XxTPdV8UzFJbNMxSWzTMUls092Nt7fdjbe33Y23t/2+Y+v9vmPr/b5j6RH6lDER+pQxEfqUMB5yREgeckRIHnJESMq2jyzKto8syraPLL4qf6y+Kn+svip/ruoFZ87qBWfO6gVnz/49mBf+PZgX/j2YFEsxlMhLMZTISzGUyj9a5m4/WuZuP1rmb0Z9awNGfWsDRn1rAXoZh0V6GYdFehmHRtLZ3ErS2dxK0tncS")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vh78w")
+
+[sub_resource type="Curve" id="Curve_r4tgf"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25316453, 1), 0.0, 0.0, 0, 0, Vector2(0.7468354, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_vh78w"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.10606061, 0.20454545, 0.3181818, 0.47727272, 0.6136364, 0.719697, 0.8636364)
+colors = PackedColorArray(0, 0, 0, 1, 0.10980392, 0.105882354, 0.12941177, 1, 0.23137255, 0.19607843, 0.17254902, 1, 0.4862745, 0.36078432, 0.29803923, 1, 0.6901961, 0.59607846, 0.4862745, 1, 0.16470589, 0.18039216, 0.2, 1, 0.32156864, 0.35686275, 0.38039216, 1, 0.49019608, 0.54901963, 0.6, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6pc8i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvpfn"]
+albedo_color = Color(0.25766784, 0.28493494, 0.29951698, 1)
+roughness = 0.15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tnpc"]
+albedo_texture = ExtResource("4_u5sy4")
+metallic = 1.0
+normal_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_264po"]
+diffuse_mode = 3
+albedo_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
+metallic = 1.0
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5newe"]
+albedo_color = Color(0.2, 0.2, 0.2, 1)
+metallic = 1.0
+roughness = 0.5
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0tnpc"]
+viewport_path = NodePath("Ship/optics/center_screen")
 
 [node name="Game" type="Node3D" unique_id=373692817]
+script = SubResource("GDScript_lbhrr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1919263906]
 environment = ExtResource("1_uwrxv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1530287382]
-transform = Transform3D(-0.25881907, 0.2500001, -0.9330127, 1.1313343e-08, 0.9659258, 0.25881916, 0.9659258, 0.06698732, -0.25000006, 0, 25, 0)
+transform = Transform3D(-0.25881904, 0.25000012, -0.93301266, 1.1313343e-08, 0.9659258, 0.25881916, 0.9659258, 0.06698731, -0.25, 0, 25, 0)
+layers = 2
+
+[node name="Ship" type="RigidBody3D" parent="." unique_id=1851740872]
+transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_r4tgf")
+gravity_scale = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ship" unique_id=194032711]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+visible = false
+shape = SubResource("ConvexPolygonShape3D_u5sy4")
+
+[node name="ShipBody" type="MeshInstance3D" parent="Ship" unique_id=621654323]
+mesh = ExtResource("3_gee14")
+surface_material_override/0 = SubResource("StandardMaterial3D_bt5mj")
+
+[node name="optics" type="Node3D" parent="Ship" unique_id=1242071838]
+
+[node name="center_screen" type="SubViewport" parent="Ship/optics" unique_id=1823340240]
+size = Vector2i(400, 300)
+
+[node name="Camera3D" type="Camera3D" parent="Ship/optics/center_screen" unique_id=685569232]
+transform = Transform3D(0.70710677, 0.35355338, -0.6123724, 0, 0.8660254, 0.5, 0.70710677, -0.35355338, 0.6123724, -10.606602, 15, 10.606602)
+
+[node name="top_rear" type="RemoteTransform3D" parent="Ship/optics" unique_id=954340518]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 15, 15)
+remote_path = NodePath("../center_screen/Camera3D")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Ship" unique_id=1156820450]
+amount = 128
+lifetime = 15.0
+preprocess = 300.0
+mesh = SubResource("ArrayMesh_lbhrr")
+emission_shape = 2
+emission_sphere_radius = 48.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 8.0
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_r4tgf")
+color_initial_ramp = SubResource("Gradient_vh78w")
+
+[node name="interior" type="StaticBody3D" parent="." unique_id=125892009]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -50000, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interior" unique_id=1666858922]
+visible = false
+shape = SubResource("WorldBoundaryShape3D_6pc8i")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="interior" unique_id=1119833537]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -10)
+visible = false
+shape = SubResource("WorldBoundaryShape3D_6pc8i")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="interior" unique_id=157830257]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 10)
+visible = false
+shape = SubResource("WorldBoundaryShape3D_6pc8i")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="interior" unique_id=1384052835]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 5, 0, 0)
+visible = false
+shape = SubResource("WorldBoundaryShape3D_6pc8i")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="interior" unique_id=153736372]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -5, 0, 0)
+visible = false
+shape = SubResource("WorldBoundaryShape3D_6pc8i")
+
+[node name="meshes" type="Node3D" parent="interior" unique_id=1608589793]
+transform = Transform3D(1, 0, 0, 3.5527137e-15, 1, 0, 0, 0, 1, 3.371748e-07, 0, 0)
+
+[node name="ShipInterior" type="MeshInstance3D" parent="interior/meshes" unique_id=29762769]
+transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -3.371748e-07, 0, 0)
+mesh = ExtResource("5_iywne")
+surface_material_override/0 = SubResource("StandardMaterial3D_kvpfn")
+surface_material_override/1 = SubResource("StandardMaterial3D_0tnpc")
+surface_material_override/4 = SubResource("StandardMaterial3D_264po")
+surface_material_override/5 = SubResource("StandardMaterial3D_5newe")
+surface_material_override/6 = SubResource("StandardMaterial3D_264po")
+
+[node name="FireExtinguisher" type="MeshInstance3D" parent="interior/meshes" unique_id=1535526706]
+transform = Transform3D(-4.371139e-08, 0, 1, 1.5529405e-22, 1, -3.5527137e-15, -1, 0, -4.371139e-08, 2, 1, 9.75)
+mesh = ExtResource("6_p57ef")
+
+[node name="Sprite3D" type="Sprite3D" parent="interior/meshes" unique_id=1262426916]
+transform = Transform3D(0.9999991, 0, 0, -3.5527105e-15, 1, 0, 0, 0, 0.9999991, 2, 0, 9.999)
+extra_cull_margin = 1.0
+centered = false
+modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
+pixel_size = 0.025
+transparent = false
+texture_filter = 0
+texture = ExtResource("5_p57ef")
+
+[node name="Player" parent="interior" unique_id=2022565502 instance=ExtResource("7_gee14")]
+
+[node name="Sprite3D" type="Sprite3D" parent="interior" unique_id=1798735699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -9.12)
+transparent = false
+double_sided = false
+texture_filter = 0
+texture = SubResource("ViewportTexture_0tnpc")
