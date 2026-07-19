@@ -19,7 +19,7 @@ var speed_mult := 10.0 # sprint multiplier, 1 for walking speed
 var early_jumper := 0.0
 var lazy_jumper := 0.0
 var sprint_start_msec := 0
-var is_sprinting := true
+var is_sprinting := false
 
 
 func set_cam(cam: Camera3D = camera) -> void:
