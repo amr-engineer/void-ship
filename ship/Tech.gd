@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if health < 0.25 && is_powered():
+		ship.prnt("A System Got damaged and powered off")
 		remove_power_cell()
 
 
