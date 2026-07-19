@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cs8spopb2ooxc" path="res://player/player.tscn" id="7_gee14"]
 [ext_resource type="Texture2D" uid="uid://cfp2b68sye7fe" path="res://assets/danger_of_death.png" id="8_0tnpc"]
 [ext_resource type="Script" uid="uid://nndng22b8a6r" path="res://ship/optic_sensors_screen.gd" id="9_vtaks"]
+[ext_resource type="Script" uid="uid://du01r5qelwsyc" path="res://ship/nav_screen.gd" id="11_ca42v"]
 [ext_resource type="Script" uid="uid://6qocrdbw5aoo" path="res://scenes/no_fire.gd" id="11_ir15t"]
 [ext_resource type="ArrayMesh" uid="uid://fjb12iaf4duc" path="res://assets/power_cell.obj" id="12_kvuet"]
 [ext_resource type="Script" uid="uid://s03nfewialp6" path="res://scenes/power_cell.gd" id="12_trtic"]
@@ -105,6 +106,12 @@ size = Vector3(4, 3, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_0tnpc"]
 viewport_path = NodePath("Ship/optics/SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ye50d"]
+size = Vector3(3, 2.1, 0.25)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ir15t"]
+viewport_path = NodePath("Ship/nav/SubViewport")
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_trtic"]
 height = 1.0
 radius = 0.15
@@ -146,6 +153,20 @@ shape = SubResource("ConvexPolygonShape3D_u5sy4")
 mesh = ExtResource("3_gee14")
 surface_material_override/0 = SubResource("StandardMaterial3D_bt5mj")
 
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Ship" unique_id=1156820450]
+amount = 128
+lifetime = 15.0
+preprocess = 300.0
+mesh = SubResource("ArrayMesh_lbhrr")
+emission_shape = 2
+emission_sphere_radius = 48.0
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 8.0
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_r4tgf")
+color_initial_ramp = SubResource("Gradient_vh78w")
+
 [node name="optics" type="Node3D" parent="Ship" unique_id=1242071838]
 
 [node name="SubViewport" type="SubViewport" parent="Ship/optics" unique_id=1823340240]
@@ -179,19 +200,34 @@ remote_path = NodePath("../SubViewport/left_side")
 transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 10, 5, 10)
 remote_path = NodePath("../SubViewport/right_side")
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="Ship" unique_id=1156820450]
-amount = 128
-lifetime = 15.0
-preprocess = 300.0
-mesh = SubResource("ArrayMesh_lbhrr")
-emission_shape = 2
-emission_sphere_radius = 48.0
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_max = 8.0
-scale_amount_min = 0.0
-scale_amount_curve = SubResource("Curve_r4tgf")
-color_initial_ramp = SubResource("Gradient_vh78w")
+[node name="nav" type="Node3D" parent="Ship" unique_id=36328467]
+
+[node name="SubViewport" type="SubViewport" parent="Ship/nav" unique_id=556727642]
+size = Vector2i(300, 225)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Ship/nav/SubViewport" unique_id=1429548767]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="Ship/nav/SubViewport/HBoxContainer" unique_id=2050070933]
+layout_mode = 2
+text = "Calibrating Engines to
+Next FTL Position"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Ship/nav/SubViewport/HBoxContainer" unique_id=1539143011]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
 
 [node name="interior" type="StaticBody3D" parent="." unique_id=125892009]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, -50000, 0)
@@ -284,6 +320,26 @@ texture = SubResource("ViewportTexture_0tnpc")
 [node name="PowerCellRack" type="RemoteTransform3D" parent="interior/objects/optics_screen" unique_id=1481407989]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.75, -8.25)
 
+[node name="nav_screen" type="StaticBody3D" parent="interior/objects" unique_id=572354562]
+transform = Transform3D(0.9999996, 0, 0, 0, 0.9999999, 0, 0, 0, 0.99999946, -5.39, 4, -5)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("11_ca42v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interior/objects/nav_screen" unique_id=566837325]
+transform = Transform3D(-4.371138e-08, 0.37136787, 0.92848563, 0, 0.9284858, -0.37136766, -0.99999994, -1.6233002e-08, -4.0585395e-08, 4.7683716e-07, 0, 4.7683716e-07)
+shape = SubResource("BoxShape3D_ye50d")
+
+[node name="Sprite3D" type="Sprite3D" parent="interior/objects/nav_screen" unique_id=1529724506]
+transform = Transform3D(-4.371134e-08, 0.37136805, 0.9284854, 9.898771e-16, 0.92848563, -0.37136802, -0.99999934, -1.6233e-08, -4.058537e-08, 4.7683716e-07, 0, 4.7683716e-07)
+transparent = false
+double_sided = false
+texture_filter = 0
+texture = SubResource("ViewportTexture_ir15t")
+
+[node name="PowerCellRack" type="RemoteTransform3D" parent="interior/objects/nav_screen" unique_id=56762398]
+transform = Transform3D(1.0000004, -3.552716e-15, -2.980234e-08, 0, -4.3711378e-08, -0.9999998, 0, 1, -4.371139e-08, -5.25, 1.25, -5)
+
 [node name="no_fire" type="RigidBody3D" parent="interior/objects" unique_id=2044304912]
 transform = Transform3D(-4.371139e-08, 6.7881184e-30, 1, 1.5529405e-22, 1, 0, -1, 1.5529405e-22, -4.371139e-08, 2, 0.5, 9.75)
 collision_layer = 24
@@ -323,6 +379,20 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ir15t")
 surface_material_override/1 = SubResource("StandardMaterial3D_kvuet")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interior/objects/power_cell_2" unique_id=2052375073]
+shape = SubResource("CylinderShape3D_oq0xs")
+
+[node name="power_cell_3" type="RigidBody3D" parent="interior/objects" unique_id=568714488]
+transform = Transform3D(0.9999992, 0, 0, 0, 1, 0, 0, 0, 0.9999992, -0.4201718, 2, 4.2865553)
+collision_layer = 24
+collision_mask = 4
+script = ExtResource("12_trtic")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="interior/objects/power_cell_3" unique_id=44244030]
+mesh = ExtResource("12_kvuet")
+surface_material_override/0 = SubResource("StandardMaterial3D_ir15t")
+surface_material_override/1 = SubResource("StandardMaterial3D_kvuet")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interior/objects/power_cell_3" unique_id=373275225]
 shape = SubResource("CylinderShape3D_oq0xs")
 
 [node name="Player" parent="interior" unique_id=2022565502 instance=ExtResource("7_gee14")]

@@ -3,6 +3,29 @@ class_name Ship
 
 
 @onready var optics_vp: SubViewport = $optics/SubViewport
+@onready var nav_progress: ProgressBar = $nav/SubViewport/HBoxContainer/ProgressBar
+@onready var nav_label: Label = $nav/SubViewport/HBoxContainer/Label
+@onready var nav_screen: Tech = $"../interior/objects/nav_screen"
+
+var enemy: Node
+var ftl_ready := false
+
+func _physics_process(delta: float) -> void:
+	if nav_screen.is_powered():
+		if enemy:
+			nav_progress.value = 100.0
+
+		if nav_progress.value < 100.0:
+			ftl_ready = false
+			nav_progress.value = nav_progress.value + delta * randf_range(0.01, 1)
+			nav_label.text = "Calibrating Engines to\nnext FTL position"
+		else:
+			ftl_ready = true
+			nav_label.text = "Ready to Go\nFaster Than Light"
+
+
+func tp() -> void:
+	print("FTL")
 
 
 func next_camera() -> void:
