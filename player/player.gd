@@ -5,6 +5,7 @@ extends CharacterBody3D
 
 @onready var head: RemoteTransform3D = $head
 @onready var pause_menu: CanvasLayer = $UI/PauseMenu
+@onready var interact_ray: RayCast3D = $head/interact
 
 
 const LONG_PRESS_DURATION = 200 # in ms
@@ -54,6 +55,11 @@ func _input(event: InputEvent) -> void:
 		if Time.get_ticks_msec() - sprint_start_msec > LONG_PRESS_DURATION:
 			is_sprinting = false
 
+	if event.is_action_pressed("interact"):
+		if interact_ray.is_colliding():
+			var collider = interact_ray.get_collider()
+			if collider.has_method("interact"): collider.interact()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion && !pause_menu.visible:
@@ -73,6 +79,11 @@ func _process(_delta: float) -> void:
 		]
 	$UI/debug.text = txt
 	$SubViewportContainer.stretch_shrink = ceili(1 / Config.options.get_value("graphics", "resolution", 1.0))
+
+	if interact_ray.is_colliding():
+		var collider = interact_ray.get_collider()
+		if collider.has_method("get_input_info"): $UI/info.text = str(collider.get_input_info())
+	else: $UI/info.text = ""
 
 
 func _physics_process(delta: float) -> void:

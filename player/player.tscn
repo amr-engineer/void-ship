@@ -41,6 +41,10 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 remote_path = NodePath("../SubViewportContainer/SubViewport/Camera3D")
 
+[node name="interact" type="RayCast3D" parent="head" unique_id=224332828]
+target_position = Vector3(0, 0, -5)
+collision_mask = 8
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1480402327]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 mesh = SubResource("CapsuleMesh_u8vuu")
@@ -59,3 +63,17 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS: "
+
+[node name="info" type="Label" parent="UI" unique_id=705757896]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -43.0
+offset_right = 56.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "[LMB] Use Item - Primary
+[RMB] Use Item - Secondary
+[E] Interact with Object"
+vertical_alignment = 2
