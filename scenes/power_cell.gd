@@ -26,8 +26,9 @@ func use() -> void:
 	if player.interact_ray.is_colliding():
 		var collider: CollisionObject3D = player.interact_ray.get_collider()
 		if collider.has_method("install_power_cell"):
-			if collider.install_power_cell(self):
+			if !collider.is_powered():
 				player.hand.remote_path = ""
+				collider.call_deferred("install_power_cell", self)
 
 
 func on_drop() -> void:
