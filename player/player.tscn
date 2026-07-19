@@ -91,7 +91,7 @@ offset_top = -43.0
 offset_right = 56.0
 offset_bottom = -16.0
 grow_vertical = 0
-text = "[LMB] Use Item - Primary
-[RMB] Use Item - Secondary
+text = "[LMB] Use Item
+[RMB] Drop Item
 [E] Interact with Object"
 vertical_alignment = 2
