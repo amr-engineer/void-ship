@@ -18,6 +18,12 @@ func _ready() -> void:
 	add_child(enemy_attack)
 
 
+func _physics_process(_delta: float) -> void:
+	if enemy && enemy.health <= 0.0:
+		enemy = null
+		prnt("Enemy Ship has been distroyed")
+
+
 func _on_config_updated() -> void:
 	world_environment.environment.ambient_light_energy = 0.1 * Config.get_value("graphics", "brightness", 1.0)
 
