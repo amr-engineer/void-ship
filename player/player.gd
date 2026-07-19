@@ -87,10 +87,14 @@ func _process(_delta: float) -> void:
 		]
 	$UI/debug.text = txt
 
+	$UI/info.text = ""
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
-		if collider.has_method("get_interact_info"): $UI/info.text = str(collider.get_interact_info())
-	else: $UI/info.text = ""
+		if collider.has_method("get_interact_info"): $UI/info.text += str(collider.get_interact_info()) + "\n"
+
+	var item_in_hand := hand.get_node_or_null(hand.remote_path)
+	if item_in_hand && item_in_hand.has_method("get_input_info"): $UI/info.text += str(item_in_hand.get_input_info())
+
 
 
 func _physics_process(delta: float) -> void:
