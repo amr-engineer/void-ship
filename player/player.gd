@@ -26,6 +26,8 @@ var lazy_jumper := 0.0
 var sprint_start_msec := 0
 var is_sprinting := false
 
+var time_elapsed: float = 0.0
+
 
 func exit() -> void:
 	get_tree().change_scene_to_file("res://menus/main.tscn")
@@ -45,6 +47,15 @@ func drop_item() -> void:
 
 func tp_animation() -> void:
 	animation_player.play("tp")
+
+
+func format_time(time: float) -> String:
+	@warning_ignore("integer_division")
+	var minutes: int = int(time) / 60
+	var seconds: int = int(time) % 60
+	var milliseconds: int = int((time - int(time)) * 100)
+	
+	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 
 
 func on_pause_state_changed() -> void:
@@ -100,7 +111,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotation.x = max(-1.57, head.rotation.x)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	var txt = """FPS: %s
 	(%.2f, %.2f, %.2f)
 	%.2f, %.2f""" % [
@@ -117,6 +128,9 @@ func _process(_delta: float) -> void:
 
 	var item_in_hand := hand.get_node_or_null(hand.remote_path)
 	if item_in_hand && item_in_hand.has_method("get_input_info"): $UI/info.text += "\n" + str(item_in_hand.get_input_info())
+	
+	time_elapsed += delta
+	$UI/time.text = format_time(time_elapsed)
 
 
 func _physics_process(delta: float) -> void:
