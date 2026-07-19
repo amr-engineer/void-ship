@@ -51,6 +51,20 @@ offset_bottom = -8.0
 grow_vertical = 0
 text = "© Spirit ^_^"
 
+[node name="Version" type="Label" parent="." unique_id=747707435]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -35.0
+offset_top = -35.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "v0"
+
 [node name="OptionsMenu" parent="." unique_id=280785582 instance=ExtResource("2_qeakq")]
 visible = false
 
