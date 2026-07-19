@@ -74,7 +74,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.10980392, 0.105882354, 0.12941177, 1, 0.
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_6pc8i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oq0xs"]
-size = Vector3(10, 3, 2)
+size = Vector3(12, 3, 2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_kvuet"]
 height = 1.75
@@ -210,11 +210,11 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0
 shape = SubResource("WorldBoundaryShape3D_6pc8i")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="interior" unique_id=1384052835]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 5, 0, 0)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 5.5, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_6pc8i")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="interior" unique_id=153736372]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -5, 0, 0)
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -5.5, 0, 0)
 shape = SubResource("WorldBoundaryShape3D_6pc8i")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="interior" unique_id=659014269]
@@ -298,7 +298,7 @@ mesh = ExtResource("6_p57ef")
 shape = SubResource("CylinderShape3D_trtic")
 
 [node name="power_cell_1" type="RigidBody3D" parent="interior/objects" unique_id=1035751996]
-transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0, 2, 5)
+transform = Transform3D(1.9106848e-15, 4.371136e-08, 0.9999993, 0.9999997, -4.371136e-08, 0, 4.3711374e-08, 0.99999934, -4.3711356e-08, 0, 2, -5)
 collision_layer = 24
 collision_mask = 4
 script = ExtResource("12_trtic")
@@ -312,7 +312,7 @@ surface_material_override/1 = SubResource("StandardMaterial3D_kvuet")
 shape = SubResource("CylinderShape3D_oq0xs")
 
 [node name="power_cell_2" type="RigidBody3D" parent="interior/objects" unique_id=1158555909]
-transform = Transform3D(0.99999946, 0, 0, 0, 1, 0, 0, 0, 0.99999946, 0, 2, -5.0000014)
+transform = Transform3D(0.99999934, 0, 0, 0, 1, 0, 0, 0, 0.99999934, 0, 2, 5)
 collision_layer = 24
 collision_mask = 4
 script = ExtResource("12_trtic")
