@@ -5,6 +5,7 @@ class_name Player
 @export var camera: Camera3D
 
 @onready var head: RemoteTransform3D = $head
+@onready var hand: RemoteTransform3D = $head/hand
 @onready var pause_menu: CanvasLayer = $UI/PauseMenu
 @onready var interact_ray: RayCast3D = $head/interact
 
@@ -28,6 +29,12 @@ func set_cam(cam: Camera3D = camera) -> void:
 	if cam:
 		head.remote_path = cam.get_path()
 		camera = cam
+
+
+func drop_item() -> void:
+	var item_in_hand := hand.get_node_or_null(hand.remote_path)
+	if item_in_hand && item_in_hand.has_method("on_drop"): item_in_hand.on_drop()
+	hand.remote_path = ""
 
 
 func on_pause_state_changed() -> void:
@@ -67,6 +74,12 @@ func _input(event: InputEvent) -> void:
 		if interact_ray.is_colliding():
 			var collider = interact_ray.get_collider()
 			if collider.has_method("interact"): collider.interact()
+
+	if event.is_action_pressed("use"):
+		var item_in_hand := hand.get_node_or_null(hand.remote_path)
+		if item_in_hand && item_in_hand.has_method("use"): item_in_hand.use()
+	if event.is_action_pressed("drop"):
+		drop_item()
 
 
 func _unhandled_input(event: InputEvent) -> void:

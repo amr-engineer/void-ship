@@ -41,6 +41,9 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 remote_path = NodePath("../SubViewportContainer/SubViewport/Camera3D")
 
+[node name="hand" type="RemoteTransform3D" parent="head" unique_id=889245826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.5, -1)
+
 [node name="interact" type="RayCast3D" parent="head" unique_id=224332828]
 target_position = Vector3(0, 0, -5)
 collision_mask = 8
