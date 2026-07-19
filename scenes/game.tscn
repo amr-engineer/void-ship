@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://du01r5qelwsyc" path="res://ship/nav_screen.gd" id="11_ca42v"]
 [ext_resource type="Script" uid="uid://6qocrdbw5aoo" path="res://scenes/no_fire.gd" id="11_ir15t"]
 [ext_resource type="ArrayMesh" uid="uid://fjb12iaf4duc" path="res://assets/power_cell.obj" id="12_kvuet"]
+[ext_resource type="ArrayMesh" uid="uid://c3o7v7lekbbmw" path="res://assets/screen.obj" id="12_rysoc"]
 [ext_resource type="Script" uid="uid://s03nfewialp6" path="res://scenes/power_cell.gd" id="12_trtic"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r4tgf"]
@@ -285,7 +286,7 @@ texture_filter = 0
 texture = ExtResource("5_p57ef")
 
 [node name="Sprite3D2" type="Sprite3D" parent="interior/meshes" unique_id=108727391]
-transform = Transform3D(0.99999964, 0, 0, 6.352747e-22, 0.70710677, 0.70710665, 0, -0.7071066, 0.7071065, 3, 1.65, -8.35)
+transform = Transform3D(0.9999996, 0, 0, 8.4703295e-22, 0.70710677, 0.70710665, 0, -0.70710653, 0.7071064, 3.3749998, 1.6484375, -8.349999)
 transparent = false
 shaded = true
 double_sided = false
@@ -331,7 +332,7 @@ transform = Transform3D(-4.371138e-08, 0.37136787, 0.92848563, 0, 0.9284858, -0.
 shape = SubResource("BoxShape3D_ye50d")
 
 [node name="Sprite3D" type="Sprite3D" parent="interior/objects/nav_screen" unique_id=1529724506]
-transform = Transform3D(-4.371134e-08, 0.37136805, 0.9284854, 9.898771e-16, 0.92848563, -0.37136802, -0.99999934, -1.6233e-08, -4.058537e-08, 4.7683716e-07, 0, 4.7683716e-07)
+transform = Transform3D(-4.371134e-08, 0.37136805, 0.9284854, 9.898771e-16, 0.92848563, -0.37136802, -0.99999934, -1.6233e-08, -4.058537e-08, 0.0062847137, 0, 4.7683716e-07)
 transparent = false
 double_sided = false
 texture_filter = 0
@@ -339,6 +340,10 @@ texture = SubResource("ViewportTexture_ir15t")
 
 [node name="PowerCellRack" type="RemoteTransform3D" parent="interior/objects/nav_screen" unique_id=56762398]
 transform = Transform3D(1.0000004, -3.552716e-15, -2.980234e-08, 0, -4.3711378e-08, -0.9999998, 0, 1, -4.371139e-08, -5.25, 1.25, -5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="interior/objects/nav_screen" unique_id=62477579]
+transform = Transform3D(0.9284858, 0.37136784, 0, -0.37136784, 0.9284858, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("12_rysoc")
 
 [node name="no_fire" type="RigidBody3D" parent="interior/objects" unique_id=2044304912]
 transform = Transform3D(-4.371139e-08, 6.7881184e-30, 1, 1.5529405e-22, 1, 0, -1, 1.5529405e-22, -4.371139e-08, 2, 0.5, 9.75)
