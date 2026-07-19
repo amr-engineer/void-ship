@@ -28,3 +28,12 @@ func on_config_updated() -> void:
 
 func save() -> Error:
 	return options.save(SAVE_PATH)
+
+
+func set_value(section: String, key: String, value: Variant) -> void:
+	options.set_value(section, key, value)
+	config_updated.emit()
+
+
+func get_value(section: String, key: String, default: Variant = null) -> Variant:
+	return options.get_value(section, key, default)
