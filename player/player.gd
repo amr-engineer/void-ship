@@ -89,7 +89,7 @@ func _process(_delta: float) -> void:
 
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
-		if collider.has_method("get_input_info"): $UI/info.text = str(collider.get_input_info())
+		if collider.has_method("get_interact_info"): $UI/info.text = str(collider.get_interact_info())
 	else: $UI/info.text = ""
 
 
