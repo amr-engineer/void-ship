@@ -264,23 +264,23 @@ texture = ExtResource("8_0tnpc")
 [node name="objects" type="Node3D" parent="interior" unique_id=1860665077]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 2.842171e-14, 0, 0)
 
-[node name="center_screen" type="StaticBody3D" parent="interior/objects" unique_id=549378042]
+[node name="optics_screen" type="StaticBody3D" parent="interior/objects" unique_id=549378042]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("9_vtaks")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interior/objects/center_screen" unique_id=1391225560]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interior/objects/optics_screen" unique_id=1391225560]
 transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, 3.5, -9.499999)
 shape = SubResource("BoxShape3D_u5sy4")
 
-[node name="Sprite3D" type="Sprite3D" parent="interior/objects/center_screen" unique_id=1798735699]
+[node name="Sprite3D" type="Sprite3D" parent="interior/objects/optics_screen" unique_id=1798735699]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.842171e-14, 3.5, -9.12)
 transparent = false
 double_sided = false
 texture_filter = 0
 texture = SubResource("ViewportTexture_0tnpc")
 
-[node name="PowerCellRack" type="RemoteTransform3D" parent="interior/objects/center_screen" unique_id=1481407989]
+[node name="PowerCellRack" type="RemoteTransform3D" parent="interior/objects/optics_screen" unique_id=1481407989]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.75, -8.25)
 
 [node name="power_cell_1" type="RigidBody3D" parent="interior/objects" unique_id=1035751996]
