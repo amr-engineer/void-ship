@@ -64,6 +64,21 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "FPS: "
 
+[node name="crosshair" type="ColorRect" parent="UI" unique_id=1599491667]
+custom_maximum_size = Vector2(4, 4)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="info" type="Label" parent="UI" unique_id=705757896]
 anchors_preset = 2
 anchor_top = 1.0
