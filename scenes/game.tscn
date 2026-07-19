@@ -280,6 +280,9 @@ double_sided = false
 texture_filter = 0
 texture = SubResource("ViewportTexture_0tnpc")
 
+[node name="PowerCellRack" type="RemoteTransform3D" parent="interior/objects/center_screen" unique_id=1481407989]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.75, -8.25)
+
 [node name="power_cell_1" type="RigidBody3D" parent="interior/objects" unique_id=1035751996]
 transform = Transform3D(0.9999997, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 0, 2, 5)
 collision_layer = 24
