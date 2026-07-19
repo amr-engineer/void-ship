@@ -6,6 +6,10 @@ class_name Ship
 @onready var nav_progress: ProgressBar = $nav/SubViewport/HBoxContainer/ProgressBar
 @onready var nav_label: Label = $nav/SubViewport/HBoxContainer/Label
 @onready var nav_screen: Tech = $"../interior/objects/nav_screen"
+@onready var gun_progress: ProgressBar = $gun/SubViewport/HBoxContainer/ProgressBar
+@onready var gun_label: Label = $gun/SubViewport/HBoxContainer/Label
+@onready var gun_screen: Tech = $"../interior/objects/gun_screen"
+
 @onready var player: Player = %Player
 @onready var game: Game = $".."
 
@@ -16,6 +20,7 @@ class_name Ship
 
 var health: float = 5.0
 var ftl_ready := false
+var shot_ready := false
 
 
 func _physics_process(delta: float) -> void:
@@ -35,6 +40,17 @@ func _physics_process(delta: float) -> void:
 			ftl_ready = true
 			nav_label.text = "Ready to Go\nFaster Than Light"
 
+	if gun_progress.value < 100.0:
+		shot_ready = false
+		if gun_screen.is_powered():
+			gun_progress.value = gun_progress.value + delta * randi_range(1, 5)
+			gun_label.text = "Autoloading..."
+	else:
+		shot_ready = true
+		if gun_screen.is_powered():
+			gun_label.text = "FIRE IN THE HOLE"
+			if game.enemy: shot()
+
 
 func prnt(line: String) -> void:
 	$console/SubViewport/RichTextLabel.add_text("\n" + line)
@@ -45,6 +61,15 @@ func tp() -> void:
 	game.next()
 	await get_tree().create_timer(1).timeout
 	nav_progress.value = 0
+
+
+func shot() -> void:
+	gun_progress.value = 0
+	if game.enemy:
+		game.enemy.take_damage(0.5)
+		prnt("Enemy got damaged")
+	else:
+		prnt("Your are shooting on stars")
 
 
 func next_camera() -> void:
