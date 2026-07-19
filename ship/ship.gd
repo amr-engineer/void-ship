@@ -12,7 +12,7 @@ var ftl_ready := false
 
 func _physics_process(delta: float) -> void:
 	if nav_screen.is_powered():
-		if enemy:
+		if !enemy:
 			nav_progress.value = 100.0
 
 		if nav_progress.value < 100.0:
