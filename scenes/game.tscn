@@ -219,6 +219,7 @@ transform = Transform3D(1, 0, 0, -3.5527137e-15, 1, 0, 0, 0, 1, -3.371748e-07, 0
 mesh = ExtResource("5_iywne")
 surface_material_override/0 = SubResource("StandardMaterial3D_kvpfn")
 surface_material_override/1 = SubResource("StandardMaterial3D_0tnpc")
+surface_material_override/3 = SubResource("StandardMaterial3D_trtic")
 surface_material_override/4 = SubResource("StandardMaterial3D_264po")
 surface_material_override/5 = SubResource("StandardMaterial3D_5newe")
 surface_material_override/6 = SubResource("StandardMaterial3D_264po")
