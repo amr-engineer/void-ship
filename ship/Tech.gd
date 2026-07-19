@@ -22,8 +22,8 @@ func fix() -> void:
 	health = 1.0
 
 
-func take_damage(minimum: float = 0.05) -> void:
-	var dmg := randf_range(minimum, 1.0)
+func take_damage(dmg_mlt: float = 1.0) -> void:
+	var dmg := randf_range(0.05, 1.0) * dmg_mlt
 	health -= dmg
 	ship.health -= dmg
 
