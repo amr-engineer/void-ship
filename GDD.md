@@ -1,5 +1,5 @@
 Lore
-> an arcady space survival game set in a solar system lives right beside an enormous black hole. inspired by retro space games and movies from 2000s era with some weird additional concepts :)
+> an arcady space survival game set in a solar system lives right beside an enormous black hole. pretty similar to FTL in loop and inspired by retro space games and movies from 2000s era with some weird additional concepts :)
 
 Dev
 - (1) first stage only implement flying and movement mechanics
