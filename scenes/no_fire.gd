@@ -22,7 +22,7 @@ func interact() -> void:
 func use() -> void:
 	if player.interact_ray.is_colliding():
 		var collider: CollisionObject3D = player.interact_ray.get_collider()
-		if collider.has_method("heal"): collider.heal()
+		if collider.has_method("fix"): collider.fix()
 
 
 func on_drop() -> void:
