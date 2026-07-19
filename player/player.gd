@@ -34,11 +34,18 @@ func on_pause_state_changed() -> void:
 	Engine.time_scale = float(!pause_menu.visible)
 
 
+func _on_config_updated() -> void:
+	$SubViewportContainer.stretch_shrink = ceili(1 / Config.options.get_value("graphics", "resolution", 1.0))
+
+
 func _ready() -> void:
 	set_cam()
 	pause_menu.hide()
 	pause_menu.visibility_changed.connect(on_pause_state_changed)
 	on_pause_state_changed()
+
+	Config.config_updated.connect(_on_config_updated)
+	_on_config_updated()
 
 
 func _input(event: InputEvent) -> void:
@@ -78,7 +85,6 @@ func _process(_delta: float) -> void:
 		rotation_degrees.y, head.rotation_degrees.x
 		]
 	$UI/debug.text = txt
-	$SubViewportContainer.stretch_shrink = ceili(1 / Config.options.get_value("graphics", "resolution", 1.0))
 
 	if interact_ray.is_colliding():
 		var collider = interact_ray.get_collider()
