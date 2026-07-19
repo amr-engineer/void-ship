@@ -5,10 +5,25 @@ class_name Tech
 @onready var ship: Ship = $"../../../Ship"
 @onready var power_cell_rack: RemoteTransform3D = $PowerCellRack
 
+var health: float = 0.0
+
 
 func _ready() -> void:
 	if is_powered(): power_on()
 	else: power_off()
+
+
+func _process(_delta: float) -> void:
+	if health < 0.25 && is_powered():
+		remove_power_cell()
+
+
+func fix() -> void:
+	health = 1.0
+
+
+func take_damage(minimum: float = 0.05) -> void:
+	health -= randf_range(minimum, 1.0)
 
 
 func power_on() -> void:
