@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://bmaw8ni2xwsbl"]
 
+[ext_resource type="Script" uid="uid://crtjxx4pqusi2" path="res://scenes/game.gd" id="1_dinhu"]
 [ext_resource type="Environment" uid="uid://cxfvw4l3kc8tr" path="res://default_env.tres" id="1_uwrxv"]
 [ext_resource type="ArrayMesh" uid="uid://dj88if37v1rjt" path="res://assets/ship_body.obj" id="3_gee14"]
 [ext_resource type="Script" uid="uid://ipbv5a5dxp6u" path="res://ship/ship.gd" id="3_iywne"]
@@ -11,10 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://cs8spopb2ooxc" path="res://player/player.tscn" id="7_gee14"]
 [ext_resource type="Texture2D" uid="uid://cfp2b68sye7fe" path="res://assets/danger_of_death.png" id="8_0tnpc"]
 [ext_resource type="Script" uid="uid://nndng22b8a6r" path="res://ship/optic_sensors_screen.gd" id="9_vtaks"]
-
-[sub_resource type="GDScript" id="GDScript_lbhrr"]
-script/source = "extends Node3D
-"
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r4tgf"]
 rough = true
@@ -102,7 +99,7 @@ size = Vector3(4, 3, 1)
 viewport_path = NodePath("Ship/optics/SubViewport")
 
 [node name="Game" type="Node3D" unique_id=373692817]
-script = SubResource("GDScript_lbhrr")
+script = ExtResource("1_dinhu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1919263906]
 environment = ExtResource("1_uwrxv")

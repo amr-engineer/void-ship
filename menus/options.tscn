@@ -18,9 +18,10 @@ offset_right = 4.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="General" type="TabBar" parent="TabContainer" unique_id=457637746]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -66,7 +67,6 @@ step = 0.1
 value = 1.1
 
 [node name="Graphics" type="TabBar" parent="TabContainer" unique_id=183310718]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -87,6 +87,27 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=2020210869]
+layout_mode = 2
+tooltip_text = "can't be changed after world creation
+each seed generates a unique world"
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=287047209]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+text = "Brightness: "
+
+[node name="brightness" type="HSlider" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1610810560]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+min_value = 0.1
+max_value = 2.0
+step = 0.1
+value = 1.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Graphics/ScrollContainer/VBoxContainer" unique_id=331896144]
 layout_mode = 2
@@ -292,6 +313,7 @@ text = "Back
 "
 
 [connection signal="value_changed" from="TabContainer/General/ScrollContainer/VBoxContainer/HBoxContainer/sensitivity" to="." method="_on_sensitivity_value_changed"]
+[connection signal="value_changed" from="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer3/brightness" to="." method="_on_brightness_value_changed"]
 [connection signal="value_changed" from="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer/resolution" to="." method="_on_resolution_value_changed"]
 [connection signal="item_selected" from="TabContainer/Graphics/ScrollContainer/VBoxContainer/HBoxContainer2/vsync" to="." method="_on_vsync_item_selected"]
 [connection signal="value_changed" from="TabContainer/Audio/ScrollContainer/VBoxContainer/HBoxContainer/master_audio" to="." method="_on_master_audio_value_changed"]

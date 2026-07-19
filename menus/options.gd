@@ -27,6 +27,9 @@ func _on_sensitivity_value_changed(value: float) -> void:
 	Config.set_value("general", "sensitivity", value)
 
 
+func _on_brightness_value_changed(value: float) -> void:
+	Config.set_value("graphics", "brightness", value)
+
 func _on_resolution_value_changed(value: float) -> void:
 	Config.set_value("graphics", "resolution", value)
 
