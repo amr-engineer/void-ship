@@ -26,9 +26,8 @@ points = PackedVector3Array(5, 2.3991585, 10, 5, -2.4001174, 10, 5, 2.3991585, -
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt5mj"]
 albedo_color = Color(0.8, 0.6, 1, 1)
 albedo_texture = ExtResource("4_u5sy4")
-metallic = 0.5
+metallic = 0.25
 roughness = 0.5
-subsurf_scatter_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_437kt"]
 vertex_color_use_as_albedo = true
@@ -78,27 +77,21 @@ colors = PackedColorArray(0, 0, 0, 1, 0.10980392, 0.105882354, 0.12941177, 1, 0.
 size = Vector3(10, 3, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvpfn"]
-albedo_color = Color(0.25766784, 0.28493494, 0.29951698, 1)
-roughness = 0.15
+albedo_color = Color(0.25882354, 0.28627452, 0.29803923, 1)
+metallic = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tnpc"]
+albedo_color = Color(0.6, 0.6, 0.6, 1)
 albedo_texture = ExtResource("4_u5sy4")
-metallic = 1.0
-normal_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_trtic"]
-albedo_color = Color(0.4, 0.4, 0.4, 1)
-metallic = 0.25
-roughness = 0.5
+albedo_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_264po"]
-diffuse_mode = 3
-albedo_color = Color(0.2901961, 0.2901961, 0.2901961, 1)
-metallic = 1.0
-roughness = 0.5
+albedo_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5newe"]
-albedo_color = Color(0.2, 0.2, 0.2, 1)
+albedo_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 metallic = 1.0
 roughness = 0.5
 
@@ -117,6 +110,7 @@ environment = ExtResource("1_uwrxv")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1530287382]
 transform = Transform3D(-0.25881904, 0.25000012, -0.93301266, 1.1313343e-08, 0.9659258, 0.25881916, 0.9659258, 0.06698731, -0.25, 0, 25, 0)
 layers = 2
+light_energy = 0.25
 
 [node name="Ship" type="RigidBody3D" parent="." unique_id=1851740872]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 0, 0, 0)
@@ -126,7 +120,6 @@ script = ExtResource("3_iywne")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ship" unique_id=194032711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
-visible = false
 shape = SubResource("ConvexPolygonShape3D_u5sy4")
 
 [node name="ShipBody" type="MeshInstance3D" parent="Ship" unique_id=621654323]
@@ -186,32 +179,26 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interior" unique_id=1666858922]
-visible = false
 shape = SubResource("WorldBoundaryShape3D_6pc8i")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="interior" unique_id=1119833537]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -10)
-visible = false
 shape = SubResource("WorldBoundaryShape3D_6pc8i")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="interior" unique_id=157830257]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 10)
-visible = false
 shape = SubResource("WorldBoundaryShape3D_6pc8i")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="interior" unique_id=1384052835]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 5, 0, 0)
-visible = false
 shape = SubResource("WorldBoundaryShape3D_6pc8i")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="interior" unique_id=153736372]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -5, 0, 0)
-visible = false
 shape = SubResource("WorldBoundaryShape3D_6pc8i")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="interior" unique_id=659014269]
 transform = Transform3D(0.9999996, 0, 0, 0, 1, 0, 0, 0, 0.9999996, 0, 1.5, -8.999995)
-visible = false
 shape = SubResource("BoxShape3D_oq0xs")
 
 [node name="meshes" type="Node3D" parent="interior" unique_id=1608589793]
@@ -234,24 +221,24 @@ mesh = ExtResource("6_p57ef")
 [node name="Sprite3D" type="Sprite3D" parent="interior/meshes" unique_id=1262426916]
 transform = Transform3D(-0.99999905, 0, -8.742269e-08, -2.1175824e-22, 1, -2.524355e-29, 8.742269e-08, 0, -0.99999905, 3.9999998, 0, 9.899999)
 centered = false
-modulate = Color(0.6666667, 0.6666667, 0.6666667, 1)
 pixel_size = 0.025
 transparent = false
+shaded = true
 double_sided = false
 texture_filter = 0
 texture = ExtResource("5_p57ef")
 
 [node name="Sprite3D2" type="Sprite3D" parent="interior/meshes" unique_id=108727391]
 transform = Transform3D(0.99999964, 0, 0, 6.352747e-22, 0.70710677, 0.70710665, 0, -0.7071066, 0.7071065, 3, 1.65, -8.35)
-modulate = Color(0.4, 0.4, 0.4, 1)
 transparent = false
+shaded = true
 double_sided = false
 texture = ExtResource("7_0tnpc")
 
 [node name="Sprite3D3" type="Sprite3D" parent="interior/meshes" unique_id=535056310]
 transform = Transform3D(-0.99999976, 0, -8.7422755e-08, -2.1175824e-22, 1, -2.524355e-29, 8.7422755e-08, 0, -0.99999976, 0, 2.5, 9.7)
-modulate = Color(0.4, 0.4, 0.4, 1)
 transparent = false
+shaded = true
 double_sided = false
 texture = ExtResource("8_0tnpc")
 
