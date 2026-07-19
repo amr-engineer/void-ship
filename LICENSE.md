@@ -35,4 +35,6 @@ The fonts bundled in this repository are open-source and licensed under the SIL 
 The OFL text can be found at https://scripts.sil.org/OFL. You may distribute and embed these fonts with this software, but the fonts themselves cannot be sold individually or re-licensed under any other terms.
 
 ## 3. Media Assets (All Rights Reserved)
+© 2026 Spirit <amr@programmer.net>. All Rights Reserved.
+
 Unless otherwise noted, all game/project assets in this repository including but not limited to graphics, images, textures, 2D/3D models, level design and audio files are proprietary and reserved by the copyright holder. They may not be redistributed, modified, or reused without prior express written permission.
