@@ -4,6 +4,7 @@ class_name Tech
 
 @onready var ship: Ship = $"../../../Ship"
 @onready var power_cell_rack: RemoteTransform3D = $PowerCellRack
+@onready var cpu_particles: CPUParticles3D = $CPUParticles3D
 
 var health: float = 1.0
 
@@ -16,11 +17,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if health < 0.25 && is_powered():
 		ship.prnt("A System Got damaged and powered off")
+		cpu_particles.show()
 		remove_power_cell()
 
 
 func fix() -> void:
 	health = 1.0
+	cpu_particles.hide()
 
 
 func take_damage(dmg_mlt: float = 1.0) -> void:
