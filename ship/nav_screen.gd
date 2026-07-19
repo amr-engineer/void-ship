@@ -22,4 +22,4 @@ func interact() -> void:
 
 func get_interact_info() -> String:
 	if ship.ftl_ready: return "[E] Go to Next Position"
-	return "[E] Speedup Calibration"
+	return "[E] Rapid Press to Speedup Calibration"
