@@ -135,3 +135,48 @@ text = "[LMB] Use Item
 [RMB] Drop Item
 [E] Interact with Object"
 vertical_alignment = 2
+
+[node name="death_screen" type="ColorRect" parent="UI" unique_id=960174839]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="UI/death_screen" unique_id=1428160062]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -117.0
+offset_top = -28.5
+offset_right = 117.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Your ship got a big boom
+Good Luck next time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="exit" type="Button" parent="UI/death_screen" unique_id=878527610]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 46.5
+offset_right = 64.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Exit"
+
+[connection signal="button_up" from="UI/death_screen/exit" to="." method="exit"]

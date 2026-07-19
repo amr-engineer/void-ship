@@ -9,6 +9,7 @@ class_name Player
 @onready var pause_menu: CanvasLayer = $UI/PauseMenu
 @onready var interact_ray: RayCast3D = $head/interact
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var death_screen: ColorRect = $UI/death_screen
 
 
 const LONG_PRESS_DURATION = 200 # in ms
@@ -24,6 +25,10 @@ var early_jumper := 0.0
 var lazy_jumper := 0.0
 var sprint_start_msec := 0
 var is_sprinting := false
+
+
+func exit() -> void:
+	get_tree().change_scene_to_file("res://menus/main.tscn")
 
 
 func set_cam(cam: Camera3D = camera) -> void:
