@@ -30,6 +30,10 @@ func _physics_process(delta: float) -> void:
 			nav_label.text = "Ready to Go\nFaster Than Light"
 
 
+func prnt(line: String) -> void:
+	$console/SubViewport/RichTextLabel.add_text("\n" + line)
+
+
 func tp() -> void:
 	player.tp_animation()
 	game.next()
