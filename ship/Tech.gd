@@ -5,7 +5,7 @@ class_name Tech
 @onready var ship: Ship = $"../../../Ship"
 @onready var power_cell_rack: RemoteTransform3D = $PowerCellRack
 
-var health: float = 0.0
+var health: float = 1.0
 
 
 func _ready() -> void:
