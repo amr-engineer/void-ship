@@ -6,13 +6,14 @@ class_name Ship
 @onready var nav_progress: ProgressBar = $nav/SubViewport/HBoxContainer/ProgressBar
 @onready var nav_label: Label = $nav/SubViewport/HBoxContainer/Label
 @onready var nav_screen: Tech = $"../interior/objects/nav_screen"
+@onready var player: Player = %Player
+@onready var game: Game = $".."
 
-var enemy: Node
 var ftl_ready := false
 
 func _physics_process(delta: float) -> void:
 	if nav_screen.is_powered():
-		if !enemy:
+		if !game.enemy:
 			nav_progress.value = 100.0
 
 		if nav_progress.value < 100.0:
@@ -20,12 +21,16 @@ func _physics_process(delta: float) -> void:
 			nav_progress.value = nav_progress.value + delta * randf_range(0.01, 1)
 			nav_label.text = "Calibrating Engines to\nnext FTL position"
 		else:
+			if !ftl_ready: game.prnt("Ready to Flight")
 			ftl_ready = true
 			nav_label.text = "Ready to Go\nFaster Than Light"
 
 
 func tp() -> void:
-	print("FTL")
+	player.tp_animation()
+	game.next()
+	await get_tree().create_timer(1).timeout
+	nav_progress.value = 0
 
 
 func next_camera() -> void:

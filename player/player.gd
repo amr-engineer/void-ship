@@ -8,6 +8,7 @@ class_name Player
 @onready var hand: RemoteTransform3D = $head/hand
 @onready var pause_menu: CanvasLayer = $UI/PauseMenu
 @onready var interact_ray: RayCast3D = $head/interact
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 const LONG_PRESS_DURATION = 200 # in ms
@@ -35,6 +36,10 @@ func drop_item() -> void:
 	var item_in_hand := hand.get_node_or_null(hand.remote_path)
 	if item_in_hand && item_in_hand.has_method("on_drop"): item_in_hand.on_drop()
 	hand.remote_path = ""
+
+
+func tp_animation() -> void:
+	animation_player.play("tp")
 
 
 func on_pause_state_changed() -> void:
@@ -107,7 +112,6 @@ func _process(_delta: float) -> void:
 
 	var item_in_hand := hand.get_node_or_null(hand.remote_path)
 	if item_in_hand && item_in_hand.has_method("get_input_info"): $UI/info.text += "\n" + str(item_in_hand.get_input_info())
-
 
 
 func _physics_process(delta: float) -> void:

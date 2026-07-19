@@ -101,6 +101,9 @@ albedo_color = Color(0.13333334, 0.13333334, 0.13333334, 1)
 metallic = 1.0
 roughness = 0.5
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_ca42v"]
+viewport_path = NodePath("Ship/console/SubViewport")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_u5sy4"]
 size = Vector3(4, 3, 1)
 
@@ -167,6 +170,24 @@ initial_velocity_max = 8.0
 scale_amount_min = 0.0
 scale_amount_curve = SubResource("Curve_r4tgf")
 color_initial_ramp = SubResource("Gradient_vh78w")
+
+[node name="console" type="Node3D" parent="Ship" unique_id=66494937]
+
+[node name="SubViewport" type="SubViewport" parent="Ship/console" unique_id=2024929965]
+size = Vector2i(400, 150)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Ship/console/SubViewport" unique_id=619261702]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_following = true
+vertical_alignment = 2
 
 [node name="optics" type="Node3D" parent="Ship" unique_id=1242071838]
 
@@ -301,6 +322,14 @@ texture = ExtResource("8_0tnpc")
 
 [node name="objects" type="Node3D" parent="interior" unique_id=1860665077]
 transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 2.842171e-14, 0, 0)
+
+[node name="console" type="Sprite3D" parent="interior/objects" unique_id=1976384051]
+transform = Transform3D(0.9999994, -5.9894293e-22, -5.9894253e-22, 8.4703295e-22, 0.70710677, 0.7071064, 0, -0.70710635, 0.7071065, -3.3, 1.59375, -8.326618)
+pixel_size = 0.0075
+transparent = false
+double_sided = false
+texture_filter = 0
+texture = SubResource("ViewportTexture_ca42v")
 
 [node name="optics_screen" type="StaticBody3D" parent="interior/objects" unique_id=549378042]
 collision_layer = 8
